@@ -238,7 +238,7 @@
                 <div class="proj-section-icon"><i class="fas fa-certificate"></i></div>
                 <div>
                     <h2 class="section-title" style="font-size:clamp(1.2rem, 3vw, 2rem);" data-i18n="certificates.title">Certificates & Achievements</h2>
-                    <p class="ttt-section-subtitle">Recognition from the Tech Talent Team programs</p>
+                    <p class="ttt-section-subtitle" data-i18n="certificates.subtitle">Recognition from the Tech Talent Team programs</p>
                 </div>
             </div>
             <div class="roman-divider"></div>
@@ -320,12 +320,14 @@ function renderTTTCertificates() {
 
 /* Init */
 document.addEventListener('DOMContentLoaded', () => {
+    PORTFOLIO_LANG.init();
     PORTFOLIO_RENDER.init();
     if (PORTFOLIO_RENDER.data) {
         renderTTTCertificates();
         PORTFOLIO_RENDER.renderFooter();
     }
     PORTFOLIO_UI.initNav();
+    PORTFOLIO_UI.initFadeIn();
     PORTFOLIO_UI.initLangToggle();
     PORTFOLIO_LANG.translatePage();
 });
