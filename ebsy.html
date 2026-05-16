@@ -87,6 +87,7 @@
 <script>
     PORTFOLIO_RENDER.category = 'EBSY';
     document.addEventListener('DOMContentLoaded', () => {
+        PORTFOLIO_LANG.init();
         PORTFOLIO_RENDER.init();
         if (PORTFOLIO_RENDER.data) {
             PORTFOLIO_RENDER.renderProjectDetail('EBSY');
