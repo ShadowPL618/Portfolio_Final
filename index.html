@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliusz Krajewski – Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/portfolio.css">
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle-wrapper">
+    <label class="lang-switch" aria-label="Switch language">
+        <span class="lang-switch__label lang-switch__label--active">EN</span>
+        <div class="lang-switch__toggle">
+            <input type="checkbox" id="langToggle" aria-label="Toggle English / Dutch">
+            <div class="lang-switch__slider"></div>
+        </div>
+        <span class="lang-switch__label">NL</span>
+    </label>
+</div>
+
+<!-- NAVIGATION -->
+<header class="main-header" id="top">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo-link" data-field="hero-name">Juliusz Krajewski</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="pages/ttt.html" class="nav-link" data-i18n="nav.ttt">TTT</a></li>
+                <li><a href="#wede"  class="nav-link" data-i18n="nav.wede">WEDE</a></li>
+                <li><a href="#ebsy"  class="nav-link" data-i18n="nav.ebsy">EBSY</a></li>
+                <li><a href="#appr"  class="nav-link" data-i18n="nav.appr">APPR</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="hero-inner">
+
+        <div class="hero-photo-wrap">
+            <img data-field="hero-image"
+                 src="assets/me.jpg"
+                 alt="Juliusz Krajewski"
+                 class="hero-photo">
+            <div class="hero-photo-ring" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-text">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow" data-field="hero-eyebrow">Portfolio</p>
+            <h1 class="hero-name" data-field="hero-name">Juliusz Krajewski</h1>
+            <p class="hero-title" data-field="hero-title">Software Engineering Student | Full-Stack Web Developer | Embedded Systems Enthusiast</p>
+            <div class="hero-badge">
+                <i class="fas fa-award"></i>
+                <span data-field="hero-participation">Represented Ter AA at the 5th edition Drone Challenge</span>
+            </div>
+            <p class="hero-badge-sub" data-i18n="hero.badge_sub">
+                One of three students selected from the entire Ter AA Techniek & ICT college
+                to represent the school at the Drone Challenge.
+            </p>
+            <div class="hero-ctas">
+                <a href="#about" class="btn-gold" data-i18n="hero.btn_about">About Me</a>
+                <a href="#wede"  class="btn-outline" data-i18n="hero.btn_projects">View Projects</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ABOUT ME -->
+<section class="section about-section" id="about">
+    <div class="section-container">
+        <h2 class="section-title" data-i18n="about.title">About Me</h2>
+        <div class="roman-divider"></div>
+
+        <div class="about-grid">
+
+            <!-- Left: photo + contact card -->
+            <div class="about-left">
+                <img data-field="about-image"
+                     src="assets/me.jpg"
+                     alt="Juliusz Krajewski"
+                     class="about-photo">
+
+                <div class="contact-card">
+                    <p class="card-label" data-i18n="about.contact">Contact</p>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span data-field="contact-email">juliuszkrajewski2009@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a data-field="contact-github"
+                           href="https://github.com/ShadowPL618"
+                           target="_blank" rel="noopener" data-i18n="about.github">GitHub Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a data-field="contact-linkedin"
+                           href="https://www.linkedin.com/in/juliusz-krajewski-12a225389/?skipRedirect=true"
+                           target="_blank" rel="noopener" data-i18n="about.linkedin">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: bio, skills, languages -->
+            <div class="about-right">
+                <h3 class="about-role" data-field="about-title">Software Engineering Student | Full-Stack Web Developer | Embedded Systems Enthusiast</h3>
+                <p class="about-bio" data-field="about-bio"></p>
+
+                <div class="skills-block">
+                    <p class="card-label" data-i18n="about.skills_proficient">Proficient In</p>
+                    <div class="badges-row" id="skills-proficient"></div>
+                </div>
+
+                <div class="skills-block">
+                    <p class="card-label" data-i18n="about.skills_learning">Currently Learning</p>
+                    <div class="badges-row" id="skills-learning"></div>
+                </div>
+
+                <div class="skills-block">
+                    <p class="card-label" data-i18n="about.languages">Languages</p>
+                    <div class="languages-grid" id="languages-grid"></div>
+                </div>
+
+                <div class="skills-block" id="favorite-block">
+                    <p class="card-label" data-i18n="about.favorite_languages">Favorite Languages</p>
+                    <div class="badges-row" id="favorite-technologies"></div>
+                </div>
+
+                <div class="skills-block">
+                    <p class="card-label" data-i18n="about.certificates">Accreditations & Distinction</p>
+                    <ul class="certificates-list" id="certificates-list"></ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- WEDE SECTION -->
+<section class="section proj-section proj-section--wede" id="wede">
+    <div class="section-container">
+        <div class="proj-section-header">
+            <div class="proj-section-icon"><i class="fas fa-globe"></i></div>
+            <div>
+                <h2 class="section-title" data-i18n="section.wede">WEDE</h2>
+                <p class="section-subtitle" data-i18n="section.wede_subtitle">Web Development Projects</p>
+            </div>
+        </div>
+        <div class="roman-divider"></div>
+        <div class="preview-grid" id="projects-wede"></div>
+        <div class="section-cta">
+            <a href="pages/wede.html" class="btn-gold" data-i18n="project.view_all_wede">
+                View All WEDE Projects <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- EBSY SECTION -->
+<section class="section proj-section proj-section--ebsy" id="ebsy">
+    <div class="section-container">
+        <div class="proj-section-header">
+            <div class="proj-section-icon"><i class="fas fa-microchip"></i></div>
+            <div>
+                <h2 class="section-title" data-i18n="section.ebsy">EBSY</h2>
+                <p class="section-subtitle" data-i18n="section.ebsy_subtitle">Embedded Systems Projects</p>
+            </div>
+        </div>
+        <div class="roman-divider"></div>
+        <div class="preview-grid" id="projects-ebsy"></div>
+        <div class="section-cta">
+            <a href="pages/ebsy.html" class="btn-gold" data-i18n="project.view_all_ebsy">
+                View All EBSY Projects <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- APPR SECTION -->
+<section class="section proj-section proj-section--appr" id="appr">
+    <div class="section-container">
+        <div class="proj-section-header">
+            <div class="proj-section-icon"><i class="fas fa-code"></i></div>
+            <div>
+                <h2 class="section-title" data-i18n="section.appr">APPR</h2>
+                <p class="section-subtitle" data-i18n="section.appr_subtitle">Application Programming Projects</p>
+            </div>
+        </div>
+        <div class="roman-divider"></div>
+        <div class="preview-grid" id="projects-appr"></div>
+        <div class="section-cta">
+            <a href="pages/appr.html" class="btn-gold" data-i18n="project.view_all_appr">
+                View All APPR Projects <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-inner">
+        <p class="footer-copy">&copy; <span id="footer-year">2026</span> <span id="footer-name">Juliusz Krajewski</span>. <span data-i18n="footer.copyright">All rights reserved.</span></p>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/juliusz-krajewski-12a225389/?skipRedirect=true"
+               target="_blank" rel="noopener" class="social-btn social-btn--linkedin" title="LinkedIn">
+                <img src="assets/LinkedIn-Icon-Black-Logo.wine.svg" alt="LinkedIn" class="social-svg">
+            </a>
+            <a href="https://github.com/ShadowPL618"
+               target="_blank" rel="noopener" class="social-btn social-btn--github" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="data/portfolio-data.js"></script>
+<script src="scripts/portfolio-i18n.js"></script>
+<script src="scripts/portfolio-main.js"></script>
+
+</body>
+</html>
