@@ -12,14 +12,6 @@ const PORTFOLIO_LANG = {
 
   init() {
     this.current = localStorage.getItem(this.STORAGE_KEY) || this.DEFAULT;
-    const htmlKeys = [
-      'hero.badge_sub', 'ttt.card_text', 'drone.overview_text', 'drone.contributions_text',
-      'energy.overview_text', 'energy.participation_text',
-      'drone.title', 'drone.subtitle', 'energy.title', 'energy.subtitle',
-      'about.title', 'about.contact', 'about.skills_proficient', 'about.skills_learning',
-      'about.languages', 'about.favorite_languages', 'about.certificates'
-    ];
-    return { current: this.current, htmlKeys };
   },
 
   getLang() {
@@ -37,14 +29,16 @@ const PORTFOLIO_LANG = {
     const i18n = window.PORTFOLIO_I18N;
     if (!i18n || !i18n[lang]) return;
 
-    const elements = document.querySelectorAll('[data-i18n]');
+    // Keys that contain HTML tags and need innerHTML
     const htmlKeysList = [
-      'hero.badge_sub', 'ttt.card_text', 'drone.overview_text', 'drone.contributions_text',
+      'hero.badge_sub', 'about.bio', 'ttt.card_text', 'drone.overview_text', 'drone.contributions_text',
       'energy.overview_text', 'energy.participation_text',
       'drone.title', 'drone.subtitle', 'energy.title', 'energy.subtitle',
       'about.title', 'about.contact', 'about.skills_proficient', 'about.skills_learning',
       'about.languages', 'about.favorite_languages', 'about.certificates'
     ];
+
+    const elements = document.querySelectorAll('[data-i18n]');
 
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -58,11 +52,51 @@ const PORTFOLIO_LANG = {
       }
     });
 
+    // Translate page title
+    this.translateTitle(lang, i18n);
+
     document.documentElement.lang = lang === 'nl' ? 'nl-NL' : 'en-GB';
 
     // Update toggle state
     const checkbox = document.getElementById('langToggle');
     if (checkbox) checkbox.checked = (lang === 'nl');
+  },
+
+  translateTitle(lang, i18n) {
+    const pageMap = {
+      '/index.html': 'page.title.index',
+      '/index.php': 'page.title.index',
+      '/pages/ttt.html': 'page.title.ttt',
+      '/pages/ttt.php': 'page.title.ttt',
+      '/pages/wede.html': 'page.title.wede',
+      '/pages/wede.php': 'page.title.wede',
+      '/pages/ebsy.html': 'page.title.ebsy',
+      '/pages/ebsy.php': 'page.title.ebsy',
+      '/pages/appr.html': 'page.title.appr',
+      '/pages/appr.php': 'page.title.appr',
+    };
+
+    const path = window.location.pathname;
+    // Try to find a match; also check if path ends with a known page key
+    let titleKey = pageMap[path] || pageMap[path.replace(/\/$/, '')];
+    if (!titleKey) {
+      // Fallback: match by page name in path
+      const pageNames = ['ttt', 'wede', 'ebsy', 'appr'];
+      for (const name of pageNames) {
+        if (path.includes(`/${name}.`)) {
+          titleKey = `page.title.${name}`;
+          break;
+        }
+      }
+      if (!titleKey) {
+        titleKey = 'page.title.index';
+      }
+    }
+
+    const translation = i18n[lang] && i18n[lang][titleKey];
+    if (translation) {
+      document.title = translation;
+    }
   },
 
   toggle() {
@@ -181,8 +215,8 @@ const PORTFOLIO_RENDER = {
             <div class="preview-card-overlay"></div>
           </div>` : ''}
           <div class="preview-card-body">
-            <h3 class="preview-card-title">${p.title}</h3>
-            <p class="preview-card-desc">${p.short_description}</p>
+            <h3 class="preview-card-title" data-i18n="project.${p.id}.title">${p.title}</h3>
+            <p class="preview-card-desc" data-i18n="project.${p.id}.short_description">${p.short_description}</p>
             ${p.technologies ? `
             <div class="tech-tags">
               ${p.technologies.map(t => `<span class="tech-tag">${t}</span>`).join('')}
@@ -227,19 +261,19 @@ const PORTFOLIO_RENDER = {
           </div>` : ''}
 
           <div class="project-detailed-content">
-            <h3>${p.title}</h3>
+            <h3 data-i18n="project.${p.id}.title">${p.title}</h3>
 
             ${p.is_collaborative ? `<span class="collab-tag"><i class="fas fa-users"></i> <span data-i18n="project.collaborative">Collaborative Project</span></span>` : ''}
 
             ${p.overview ? `
             <div class="project-overview">
               <h4 data-i18n="project.overview">Overview</h4>
-              <p>${p.overview}</p>
+              <p data-i18n="project.${p.id}.overview">${p.overview}</p>
             </div>` : ''}
 
             <div class="project-description">
               <h4 data-i18n="project.description">Description</h4>
-              <p>${p.description}</p>
+              <p data-i18n="project.${p.id}.description">${p.description}</p>
             </div>
 
             ${p.technologies ? `
@@ -355,6 +389,7 @@ const PORTFOLIO_UI = {
 
   /* Init everything */
   init() {
+    PORTFOLIO_LANG.init();
     PORTFOLIO_RENDER.init();
     if (PORTFOLIO_RENDER.data) {
       PORTFOLIO_RENDER.renderHero();
