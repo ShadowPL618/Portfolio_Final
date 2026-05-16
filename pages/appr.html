@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPR – Application Programming Projects – Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles/portfolio.css">
+</head>
+<body>
+
+<!-- Language Toggle -->
+<div class="lang-toggle-wrapper">
+    <label class="lang-switch" aria-label="Switch language">
+        <span class="lang-switch__label lang-switch__label--active">EN</span>
+        <div class="lang-switch__toggle">
+            <input type="checkbox" id="langToggle" aria-label="Toggle English / Dutch">
+            <div class="lang-switch__slider"></div>
+        </div>
+        <span class="lang-switch__label">NL</span>
+    </label>
+</div>
+
+<!-- NAVIGATION -->
+<header class="main-header">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo-link">Juliusz Krajewski</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="ttt.html"             class="nav-link" data-i18n="nav.ttt">TTT</a></li>
+                <li><a href="wede.html"            class="nav-link" data-i18n="nav.wede">WEDE</a></li>
+                <li><a href="ebsy.html"            class="nav-link" data-i18n="nav.ebsy">EBSY</a></li>
+                <li><a href="appr.html"            class="nav-link" data-i18n="nav.appr">APPR</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main class="portfolio-main">
+
+    <section class="section proj-section--appr">
+        <div class="section-container">
+
+            <div class="proj-section-header">
+                <div class="proj-section-icon"><i class="fas fa-code"></i></div>
+                <div>
+                    <h2 class="section-title" data-i18n="section.appr">APPR</h2>
+                    <p class="section-subtitle" data-i18n="section.appr_subtitle">Application Programming Projects</p>
+                </div>
+            </div>
+            <div class="roman-divider"></div>
+
+            <div class="projects-detailed-grid" id="projects-detailed"></div>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+    <div class="footer-inner">
+        <p class="footer-copy">&copy; <span id="footer-year">2026</span> <span id="footer-name">Juliusz Krajewski</span>. <span data-i18n="footer.copyright">All rights reserved.</span></p>
+        <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/juliusz-krajewski-12a225389/?skipRedirect=true"
+               target="_blank" rel="noopener" class="social-btn social-btn--linkedin" title="LinkedIn">
+                <img src="../assets/LinkedIn-Icon-Black-Logo.wine.svg" alt="LinkedIn" class="social-svg">
+            </a>
+            <a href="https://github.com/ShadowPL618"
+               target="_blank" rel="noopener" class="social-btn social-btn--github" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../data/portfolio-data.js"></script>
+<script src="../scripts/portfolio-i18n.js"></script>
+<script src="../scripts/portfolio-main.js"></script>
+<script>
+    PORTFOLIO_RENDER.category = 'APPR';
+    document.addEventListener('DOMContentLoaded', () => {
+        PORTFOLIO_RENDER.init();
+        if (PORTFOLIO_RENDER.data) {
+            PORTFOLIO_RENDER.renderProjectDetail('APPR');
+            PORTFOLIO_RENDER.renderFooter();
+        }
+        PORTFOLIO_UI.initNav();
+        PORTFOLIO_UI.initFadeIn();
+        PORTFOLIO_UI.initLangToggle();
+        PORTFOLIO_LANG.translatePage();
+    });
+</script>
+
+</body>
+</html>
