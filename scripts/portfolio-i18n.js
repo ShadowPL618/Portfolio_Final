@@ -2,7 +2,7 @@
  * portfolio-i18n.js
  * English / Dutch translations for the static portfolio site.
  */
-const PORTFOLIO_I18N = {
+var PORTFOLIO_I18N = {
   en: {
     /* Navigation */
     "nav.about": "About",
