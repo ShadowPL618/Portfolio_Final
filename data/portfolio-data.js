@@ -3,7 +3,7 @@
  * Static data file replacing the MySQL database for GitHub Pages deployment.
  * Contains all projects, skills, languages, certificates, and personal info.
  */
-const PORTFOLIO_DATA = {
+var PORTFOLIO_DATA = {
   about: {
     name: "Juliusz Krajewski",
     title: "Software Engineering Student | Full-Stack Web Developer | Embedded Systems Enthusiast",
