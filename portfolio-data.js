@@ -13,7 +13,7 @@ var PORTFOLIO_DATA = {
     favorite_technologies: ["PHP", "C++"]
   },
   contact: {
-    email: "juliuszkrajewski2009@gmail.com",
+    email: "95260@ter-aa.nl",
     github_url: "https://github.com/ShadowPL618",
     linkedin_url: "https://www.linkedin.com/in/juliusz-krajewski-12a225389/?skipRedirect=true"
   },
